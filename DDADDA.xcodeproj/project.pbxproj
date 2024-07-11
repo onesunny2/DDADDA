@@ -19,6 +19,7 @@
 		439CBC972C35A2680057E352 /* HSSanTokki2.0-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC952C35A2680057E352 /* HSSanTokki2.0-Regular.ttf */; };
 		439CBC982C35A2680057E352 /* HSSantokki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC962C35A2680057E352 /* HSSantokki.ttf */; };
 		439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC9B2C3714970057E352 /* Extension+Font.swift */; };
+		439CBCE32C3FA33E0057E352 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 439CBCE22C3FA33E0057E352 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		439CBC962C35A2680057E352 /* HSSantokki.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HSSantokki.ttf; sourceTree = "<group>"; };
 		439CBC992C35A2F30057E352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		439CBC9B2C3714970057E352 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
+		439CBCE22C3FA33E0057E352 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		439CBC532C35A0270057E352 = {
 			isa = PBXGroup;
 			children = (
+				439CBCE22C3FA33E0057E352 /* .gitignore */,
 				439CBC5E2C35A0270057E352 /* DDADDA */,
 				439CBC752C35A0290057E352 /* DDADDATests */,
 				439CBC7F2C35A0290057E352 /* DDADDAUITests */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439CBCE32C3FA33E0057E352 /* .gitignore in Resources */,
 				439CBC982C35A2680057E352 /* HSSantokki.ttf in Resources */,
 				439CBC6D2C35A0290057E352 /* Preview Assets.xcassets in Resources */,
 				439CBC692C35A0290057E352 /* Assets.xcassets in Resources */,
