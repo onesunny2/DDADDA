@@ -10,12 +10,15 @@
 		439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC5F2C35A0270057E352 /* DDADDAApp.swift */; };
 		439CBC622C35A0270057E352 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC612C35A0270057E352 /* Persistence.swift */; };
 		439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC632C35A0270057E352 /* DDADDA.xcdatamodeld */; };
-		439CBC672C35A0270057E352 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC662C35A0270057E352 /* ContentView.swift */; };
 		439CBC692C35A0290057E352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC682C35A0290057E352 /* Assets.xcassets */; };
 		439CBC6D2C35A0290057E352 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC6C2C35A0290057E352 /* Preview Assets.xcassets */; };
 		439CBC772C35A0290057E352 /* DDADDATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC762C35A0290057E352 /* DDADDATests.swift */; };
 		439CBC812C35A0290057E352 /* DDADDAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC802C35A0290057E352 /* DDADDAUITests.swift */; };
 		439CBC832C35A0290057E352 /* DDADDAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC822C35A0290057E352 /* DDADDAUITestsLaunchTests.swift */; };
+		439CBC932C35A0D20057E352 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC922C35A0D20057E352 /* SelectView.swift */; };
+		439CBC972C35A2680057E352 /* HSSanTokki2.0-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC952C35A2680057E352 /* HSSanTokki2.0-Regular.ttf */; };
+		439CBC982C35A2680057E352 /* HSSantokki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC962C35A2680057E352 /* HSSantokki.ttf */; };
+		439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC9B2C3714970057E352 /* Extension+Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +43,6 @@
 		439CBC5F2C35A0270057E352 /* DDADDAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDADDAApp.swift; sourceTree = "<group>"; };
 		439CBC612C35A0270057E352 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		439CBC642C35A0270057E352 /* DDADDA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DDADDA.xcdatamodel; sourceTree = "<group>"; };
-		439CBC662C35A0270057E352 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		439CBC682C35A0290057E352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		439CBC6A2C35A0290057E352 /* DDADDA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DDADDA.entitlements; sourceTree = "<group>"; };
 		439CBC6C2C35A0290057E352 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -49,6 +51,11 @@
 		439CBC7C2C35A0290057E352 /* DDADDAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DDADDAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CBC802C35A0290057E352 /* DDADDAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDADDAUITests.swift; sourceTree = "<group>"; };
 		439CBC822C35A0290057E352 /* DDADDAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDADDAUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		439CBC922C35A0D20057E352 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		439CBC952C35A2680057E352 /* HSSanTokki2.0-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HSSanTokki2.0-Regular.ttf"; sourceTree = "<group>"; };
+		439CBC962C35A2680057E352 /* HSSantokki.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HSSantokki.ttf; sourceTree = "<group>"; };
+		439CBC992C35A2F30057E352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		439CBC9B2C3714970057E352 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +106,13 @@
 		439CBC5E2C35A0270057E352 /* DDADDA */ = {
 			isa = PBXGroup;
 			children = (
+				439CBC9A2C35A3440057E352 /* Extension */,
+				439CBC992C35A2F30057E352 /* Info.plist */,
+				439CBC912C35A0BA0057E352 /* Resources */,
+				439CBC902C35A0AF0057E352 /* Model */,
+				439CBC8F2C35A0A90057E352 /* View */,
 				439CBC5F2C35A0270057E352 /* DDADDAApp.swift */,
 				439CBC612C35A0270057E352 /* Persistence.swift */,
-				439CBC662C35A0270057E352 /* ContentView.swift */,
 				439CBC682C35A0290057E352 /* Assets.xcassets */,
 				439CBC6A2C35A0290057E352 /* DDADDA.entitlements */,
 				439CBC632C35A0270057E352 /* DDADDA.xcdatamodeld */,
@@ -133,6 +144,46 @@
 				439CBC822C35A0290057E352 /* DDADDAUITestsLaunchTests.swift */,
 			);
 			path = DDADDAUITests;
+			sourceTree = "<group>";
+		};
+		439CBC8F2C35A0A90057E352 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				439CBC922C35A0D20057E352 /* SelectView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		439CBC902C35A0AF0057E352 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		439CBC912C35A0BA0057E352 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				439CBC942C35A21D0057E352 /* Font */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		439CBC942C35A21D0057E352 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				439CBC962C35A2680057E352 /* HSSantokki.ttf */,
+				439CBC952C35A2680057E352 /* HSSanTokki2.0-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		439CBC9A2C35A3440057E352 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				439CBC9B2C3714970057E352 /* Extension+Font.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +290,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439CBC982C35A2680057E352 /* HSSantokki.ttf in Resources */,
 				439CBC6D2C35A0290057E352 /* Preview Assets.xcassets in Resources */,
 				439CBC692C35A0290057E352 /* Assets.xcassets in Resources */,
+				439CBC972C35A2680057E352 /* HSSanTokki2.0-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,9 +318,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */,
+				439CBC932C35A0D20057E352 /* SelectView.swift in Sources */,
 				439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */,
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,
-				439CBC672C35A0270057E352 /* ContentView.swift in Sources */,
 				439CBC622C35A0270057E352 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +486,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DDADDA/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -470,6 +525,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DDADDA/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

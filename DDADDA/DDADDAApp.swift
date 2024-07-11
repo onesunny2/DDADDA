@@ -13,7 +13,7 @@ struct DDADDAApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SelectView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
