@@ -34,5 +34,5 @@ extension Font {
     
     static var itemTitle: Font {
         return santokkiFont(size: 20)
-    }
+    }  
 }
