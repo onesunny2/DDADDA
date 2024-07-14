@@ -20,6 +20,7 @@
 		439CBC982C35A2680057E352 /* HSSantokki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 439CBC962C35A2680057E352 /* HSSantokki.ttf */; };
 		439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC9B2C3714970057E352 /* Extension+Font.swift */; };
 		439CBCE32C3FA33E0057E352 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 439CBCE22C3FA33E0057E352 /* .gitignore */; };
+		439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE42C4445940057E352 /* Extension+Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		439CBC992C35A2F30057E352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		439CBC9B2C3714970057E352 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		439CBCE22C3FA33E0057E352 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		439CBCE42C4445940057E352 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				439CBC9B2C3714970057E352 /* Extension+Font.swift */,
+				439CBCE42C4445940057E352 /* Extension+Image.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				439CBC932C35A0D20057E352 /* SelectView.swift in Sources */,
 				439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */,
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,
+				439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */,
 				439CBC622C35A0270057E352 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

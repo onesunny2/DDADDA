@@ -12,8 +12,12 @@ extension Font {
         return Font.custom("HSSantokki", size: size)
     }
     
+    static func santokkiFont2(size: CGFloat) -> Font {
+        return Font.custom("HSSanTokki2.0-Regular", size: size)
+    }
+    
     static var menu: Font {
-        return santokkiFont(size: 65)
+        return santokkiFont2(size: 65)
     }
     
     static var title1: Font {
@@ -34,5 +38,5 @@ extension Font {
     
     static var itemTitle: Font {
         return santokkiFont(size: 20)
-    }  
+    }
 }
