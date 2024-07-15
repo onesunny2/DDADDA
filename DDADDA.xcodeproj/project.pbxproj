@@ -21,6 +21,8 @@
 		439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC9B2C3714970057E352 /* Extension+Font.swift */; };
 		439CBCE32C3FA33E0057E352 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 439CBCE22C3FA33E0057E352 /* .gitignore */; };
 		439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE42C4445940057E352 /* Extension+Image.swift */; };
+		439CBCE72C44C9BD0057E352 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE62C44C9BD0057E352 /* LibraryView.swift */; };
+		439CBCE92C44C9CE0057E352 /* SketchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE82C44C9CE0057E352 /* SketchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		439CBC9B2C3714970057E352 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		439CBCE22C3FA33E0057E352 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		439CBCE42C4445940057E352 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
+		439CBCE62C44C9BD0057E352 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		439CBCE82C44C9CE0057E352 /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				439CBC922C35A0D20057E352 /* SelectView.swift */,
+				439CBCE62C44C9BD0057E352 /* LibraryView.swift */,
+				439CBCE82C44C9CE0057E352 /* SketchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +331,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439CBCE92C44C9CE0057E352 /* SketchView.swift in Sources */,
+				439CBCE72C44C9BD0057E352 /* LibraryView.swift in Sources */,
 				439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */,
 				439CBC932C35A0D20057E352 /* SelectView.swift in Sources */,
 				439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */,
