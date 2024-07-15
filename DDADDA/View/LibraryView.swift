@@ -22,9 +22,13 @@ struct LibraryView: View {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 38)
                         .foregroundStyle(.white)
-                        .frame(width: geo.size.width * 0.87, height: geo.size.height * 0.68)
+                        .frame(width: geo.size.width * 0.87, height: geo.size.height * 0.7)
                         .position(x: geo.size.width / 2, y: geo.size.height / 2)
                         .shadow(color: .black.opacity(0.2), radius: 24, x: 4, y: 7)
+                    
+                    Image(.libraryWood)
+                        .resizable()
+                        .frame(width: geo.size.width * 0.87, height: geo.size.height * 0.55)
                 }
                 
                 // 뒤로가기 버튼 커스텀
