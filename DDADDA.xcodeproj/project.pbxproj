@@ -23,6 +23,7 @@
 		439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE42C4445940057E352 /* Extension+Image.swift */; };
 		439CBCE72C44C9BD0057E352 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE62C44C9BD0057E352 /* LibraryView.swift */; };
 		439CBCE92C44C9CE0057E352 /* SketchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE82C44C9CE0057E352 /* SketchView.swift */; };
+		439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		439CBCE42C4445940057E352 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		439CBCE62C44C9BD0057E352 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		439CBCE82C44C9CE0057E352 /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
+		439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbuttonCustom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		439CBC5E2C35A0270057E352 /* DDADDA */ = {
 			isa = PBXGroup;
 			children = (
+				439CBCEA2C453F4F0057E352 /* Manager */,
 				439CBC9A2C35A3440057E352 /* Extension */,
 				439CBC992C35A2F30057E352 /* Info.plist */,
 				439CBC912C35A0BA0057E352 /* Resources */,
@@ -196,6 +199,14 @@
 				439CBCE42C4445940057E352 /* Extension+Image.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		439CBCEA2C453F4F0057E352 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +350,7 @@
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,
 				439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */,
 				439CBC622C35A0270057E352 /* Persistence.swift in Sources */,
+				439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

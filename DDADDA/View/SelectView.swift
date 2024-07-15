@@ -19,8 +19,8 @@ struct SelectView: View {
                     
                     ZStack {
                         selectButton(size: geo.size)
-                            .padding(.bottom, 140)
-                            .padding(.leading, 50)
+                            .padding(.bottom, geo.size.height * 0.14)
+                            .padding(.leading, geo.size.width * 0.04)
                         
                         // fox, rabbit
                         animals(size: geo.size)
@@ -42,15 +42,15 @@ struct SelectView: View {
                 NavigationLink(destination: SketchView(), label: {
                     Image(.drawButton)
                         .resizableImage(width: size.width * 0.27)
-                        .padding(.leading, 260)
+                        .padding(.leading, size.width * 0.2)
                 })
 
                 NavigationLink(destination: LibraryView(), label: {
                     Image(.writeButton)
                         .resizableImage(width: size.width * 0.24)
-                        .padding(.trailing, 220)
+                        .padding(.trailing, size.width * 0.16)
                 })
-            } .padding(.bottom, 330)
+            } .padding(.bottom, size.height * 0.32)
         }
     }
     
