@@ -20,16 +20,20 @@ extension Font {
         return santokkiFont2(size: 65)
     }
     
-    static var title1: Font {
+    static var bigTitle1: Font {
         return santokkiFont(size: 45)
     }
     
-    static var title2: Font {
+    static var bigTitle2: Font {
         return santokkiFont(size: 42)
     }
     
-    static var badge: Font {
-        return santokkiFont(size: 30)
+    static var badge1: Font {
+        return santokkiFont2(size: 33)
+    }
+    
+    static var badge2: Font {
+        return santokkiFont2(size: 30)
     }
     
     static var subTitle: Font {
@@ -37,6 +41,6 @@ extension Font {
     }
     
     static var itemTitle: Font {
-        return santokkiFont(size: 20)
+        return santokkiFont2(size: 20)
     }
 }
