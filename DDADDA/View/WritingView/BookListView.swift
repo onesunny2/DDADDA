@@ -1,13 +1,13 @@
 //
-//  LibraryView.swift
+//  BookListView.swift
 //  DDADDA
 //
-//  Created by Lee Wonsun on 7/15/24.
+//  Created by Lee Wonsun on 7/19/24.
 //
 
 import SwiftUI
 
-struct LibraryView: View {
+struct BookListView: View {
     @State var isSheetPresented: Bool = false
     
     var body: some View {
@@ -72,7 +72,7 @@ struct LibraryView: View {
                                 isSheetPresented = true
                             }
                             .fullScreenCover(isPresented: $isSheetPresented) {
-                                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                                WordView()
                             }
                         
                         // 단어 수, 책 권수
@@ -134,6 +134,10 @@ struct LibraryView: View {
                                     .onTapGesture {
                                         // TODO: 코드 넣기
                                     }
+                                    .fullScreenCover(isPresented: $isSheetPresented)
+                                {
+                                    WordView()
+                                }
                             }
                         } .padding(.bottom, -size.height * 0.01)
                         
@@ -174,5 +178,5 @@ struct LibraryView: View {
 }
 
 #Preview {
-    LibraryView()
+    BookListView()
 }

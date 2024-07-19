@@ -45,7 +45,7 @@ struct SelectView: View {
                         .padding(.leading, size.width * 0.2)
                 })
 
-                NavigationLink(destination: LibraryView(), label: {
+                NavigationLink(destination: BookListView(), label: {
                     Image(.writeButton)
                         .resizableImage(width: size.width * 0.24)
                         .padding(.trailing, size.width * 0.16)
