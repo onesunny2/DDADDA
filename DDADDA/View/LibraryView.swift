@@ -64,6 +64,7 @@ struct LibraryView: View {
                     HStack(alignment: .bottom) {
                         // 여우와 포도 책
                         Image(.book1)
+                            .resizableImage(width: size.width * 0.15)
                             .onTapGesture {
                                 // TODO: 코드 넣기
                             }
@@ -72,7 +73,7 @@ struct LibraryView: View {
                         VStack(spacing: size.height * 0.007) {
                             ZStack(alignment: .leading) {
                                 RoundedRectangle(cornerRadius: 48)
-                                    .frame(width: size.width * 0.21, height: size.height * 0.04)
+                                    .frame(width: size.width * 0.22, height: size.height * 0.04)
                                     .opacity(0.5)
                                 
                                 HStack(spacing: size.width * 0.059) {
@@ -91,7 +92,7 @@ struct LibraryView: View {
                             
                             ZStack(alignment: .leading) {
                                 RoundedRectangle(cornerRadius: 48)
-                                    .frame(width: size.width * 0.21, height: size.height * 0.04)
+                                    .frame(width: size.width * 0.22, height: size.height * 0.04)
                                     .opacity(0.5)
                                 
                                 HStack(spacing: size.width * 0.059) {
@@ -122,22 +123,26 @@ struct LibraryView: View {
                         // 나머지 책
                         HStack(spacing: size.width * 0.002) {
                             Image(.book2)
+                                .resizableImage(width: size.width * 0.15)
                                 .onTapGesture {
                                     // TODO: 코드 넣기
                                 }
                             Image(.book3)
+                                .resizableImage(width: size.width * 0.15)
                                 .onTapGesture {
                                     // TODO: 코드 넣기
                                 }
                             Image(.book4)
+                                .resizableImage(width: size.width * 0.15)
                                 .onTapGesture {
                                     // TODO: 코드 넣기
                                 }
                             Image(.book5)
+                                .resizableImage(width: size.width * 0.15)
                                 .onTapGesture {
                                     // TODO: 코드 넣기
                                 }
-                        }
+                        } .padding(.bottom, -size.height * 0.01)
                         
                         // 선반 및 그림자
                         Rectangle()
@@ -148,6 +153,7 @@ struct LibraryView: View {
                     }
                 }
             }
+            .padding(.top, size.height * 0.04)
             .frame(width: size.width * 0.87, height: size.height * 0.55)
             .position(x: size.width * 0.5, y: size.height * 0.5)
         }
