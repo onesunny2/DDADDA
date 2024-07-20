@@ -25,6 +25,7 @@
 		439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */; };
 		43FFECC92C4A06AE0022FFA5 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECC82C4A06AE0022FFA5 /* BookListView.swift */; };
 		43FFECCB2C4A06F30022FFA5 /* WordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECCA2C4A06F30022FFA5 /* WordView.swift */; };
+		43FFECCF2C4C35750022FFA5 /* Extention+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECCE2C4C35750022FFA5 /* Extention+View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbuttonCustom.swift; sourceTree = "<group>"; };
 		43FFECC82C4A06AE0022FFA5 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		43FFECCA2C4A06F30022FFA5 /* WordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
+		43FFECCE2C4C35750022FFA5 /* Extention+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			children = (
 				439CBC9B2C3714970057E352 /* Extension+Font.swift */,
 				439CBCE42C4445940057E352 /* Extension+Image.swift */,
+				43FFECCE2C4C35750022FFA5 /* Extention+View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			files = (
 				439CBCE92C44C9CE0057E352 /* SketchView.swift in Sources */,
 				439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */,
+				43FFECCF2C4C35750022FFA5 /* Extention+View.swift in Sources */,
 				439CBC932C35A0D20057E352 /* SelectView.swift in Sources */,
 				439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */,
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,

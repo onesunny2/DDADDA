@@ -72,7 +72,7 @@ struct BookListView: View {
                                 isSheetPresented = true
                             }
                             .fullScreenCover(isPresented: $isSheetPresented) {
-                                WordView()
+                                WordView(isSheetPresented: $isSheetPresented)
                             }
                         
                         // 단어 수, 책 권수
@@ -136,7 +136,7 @@ struct BookListView: View {
                                     }
                                     .fullScreenCover(isPresented: $isSheetPresented)
                                 {
-                                    WordView()
+                                    WordView(isSheetPresented: $isSheetPresented)
                                 }
                             }
                         } .padding(.bottom, -size.height * 0.01)
@@ -166,7 +166,7 @@ struct BookListView: View {
                         .padding(.trailing, size.width * 0.012)
                     
                     Text("뒤로가기")
-                        .font(.custom("HSSantokki", size: 42))
+                        .font(.bigTitle2)
                         .foregroundStyle(.white)
                 }
                 .padding(.top, size.height * 0.05)
