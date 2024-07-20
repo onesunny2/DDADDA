@@ -16,6 +16,10 @@ extension Font {
         return Font.custom("HSSanTokki2.0-Regular", size: size)
     }
     
+    static var word: Font {
+        return santokkiFont2(size: 250)
+    }
+    
     static var menu: Font {
         return santokkiFont2(size: 65)
     }
