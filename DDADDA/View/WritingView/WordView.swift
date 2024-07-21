@@ -11,31 +11,38 @@ struct WordView: View {
     
     @Binding var isSheetPresented: Bool
     @State var isWriting: Bool = true
+    // 현재 이미지 인덱스를 추적하는 상태 변수
+    @State private var currentIndex = 0
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Image(.blurBackground)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: geo.size.height)
-                
-                // 창닫기, 앨범 저장하기
-                closeShareButton(size: geo.size)
-                    .padding(.top, geo.size.height * 0.055)
-                
-                // 여우 그림, 글쓰기 영역
-                imageTextField(size: geo.size)
-                
-                // 펜슬킷 도구 영역
-                VStack(alignment: .leading, spacing: -geo.size.height * 0.07) {
-                    eraserButton(size: geo.size)
+        NavigationStack {
+            GeometryReader { geo in
+                ZStack {
+                    Image(.blurBackground)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: geo.size.height)
                     
-                    pencilButton(size: geo.size)
+                    // 창닫기, 앨범 저장하기
+                    closeShareButton(size: geo.size)
+                        .padding(.top, geo.size.height * 0.055)
+                    
+                    // 여우 그림, 글쓰기 영역
+                    imageTextField(size: geo.size)
+                    
+                    // 펜슬킷 도구 영역
+                    VStack(spacing: -geo.size.height * 0.07) {
+                        eraserButton(size: geo.size)
+                        
+                        pencilButton(size: geo.size)
+                    } .padding(.bottom, geo.size.height * 0.08)
+                    
+                    // 다음버튼
+                    nextButton(size: geo.size)
                 }
             }
+            .ignoresSafeArea(.all)
         }
-        .ignoresSafeArea(.all)
     }
     
     // MARK: - 창 닫기, 앨범 저장하기 버튼
@@ -89,7 +96,7 @@ struct WordView: View {
                         .padding(.bottom, 200)
                     
                     // TODO: 추후 데이터 갈아끼우기
-                    Image(.foxFont)
+                    Image(foxAndGrapeWord[currentIndex])
                 } .padding(.leading, size.width * 0.05)
             }
         }
@@ -98,24 +105,71 @@ struct WordView: View {
     // MARK: - 지우개 도구버튼
     @ViewBuilder
     func eraserButton(size: CGSize) -> some View {
-        Image(.eraser)
-            .resizableImage(width: size.width * 0.067)
-            .rotationEffect(.degrees(270))
-            .onTapGesture {
-                // TODO: 기능추가하기
-                isWriting = false
-            }
+        HStack {
+            Spacer()
+            
+            Button(action: {
+                withAnimation {
+                    isWriting = false
+                }
+            }, label: {
+                Image(.eraser)
+                    .resizableImage(width: size.width * 0.067)
+                    .rotationEffect(.degrees(270))
+            }) .padding(.trailing, isWriting ? -40 : 0)
+        }
     }
     
     // MARK: - 연필 도구버튼
     func pencilButton(size: CGSize) -> some View {
-        Image(.pencil)
-            .resizableImage(width: size.width * 0.04)
-            .rotationEffect(.degrees(270))
-            .onTapGesture {
-                // TODO: 기능추가하기
-                isWriting = true
+        HStack {
+            Spacer()
+            
+            Button(action: {
+                withAnimation {
+                    isWriting = true
+                }
+            }, label: {
+                Image(.pencil)
+                    .resizableImage(width: size.width * 0.04)
+                    .rotationEffect(.degrees(270))
+            }) .padding(.trailing, isWriting ? 0 : -30)
+        }
+    }
+    
+    // MARK: - 다음으로 넘어가기 버튼
+    @ViewBuilder
+    func nextButton(size: CGSize) -> some View {
+        Button(action: {
+            withAnimation {
+                currentIndex = (currentIndex + 1) % foxAndGrapeWord.count
             }
+        }, label: {
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    HStack(spacing: size.width * 0.012) {
+                        Text("다음으로")
+                            .font(.bigTitle2)
+                            .foregroundStyle(.darkgray)
+                        
+                        ZStack {
+                            Circle()
+                                .frame(width: size.width * 0.046)
+                                .foregroundStyle(.darkgray)
+                            
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: size.width * 0.02))
+                                .bold()
+                                .foregroundStyle(.white)
+                        }
+                    }
+                } .padding(.trailing, size.width * 0.15)
+            } .padding(.bottom, size.height * 0.03)
+        })
     }
 }
 

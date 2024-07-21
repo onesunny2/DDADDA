@@ -26,6 +26,7 @@
 		43FFECC92C4A06AE0022FFA5 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECC82C4A06AE0022FFA5 /* BookListView.swift */; };
 		43FFECCB2C4A06F30022FFA5 /* WordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECCA2C4A06F30022FFA5 /* WordView.swift */; };
 		43FFECCF2C4C35750022FFA5 /* Extention+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECCE2C4C35750022FFA5 /* Extention+View.swift */; };
+		43FFECD12C4D3B6F0022FFA5 /* WritingWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECD02C4D3B6F0022FFA5 /* WritingWordList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		43FFECC82C4A06AE0022FFA5 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		43FFECCA2C4A06F30022FFA5 /* WordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
 		43FFECCE2C4C35750022FFA5 /* Extention+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+View.swift"; sourceTree = "<group>"; };
+		43FFECD02C4D3B6F0022FFA5 /* WritingWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingWordList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		439CBC902C35A0AF0057E352 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				43FFECD02C4D3B6F0022FFA5 /* WritingWordList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,
 				439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */,
 				43FFECCB2C4A06F30022FFA5 /* WordView.swift in Sources */,
+				43FFECD12C4D3B6F0022FFA5 /* WritingWordList.swift in Sources */,
 				43FFECC92C4A06AE0022FFA5 /* BookListView.swift in Sources */,
 				439CBC622C35A0270057E352 /* Persistence.swift in Sources */,
 				439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */,
