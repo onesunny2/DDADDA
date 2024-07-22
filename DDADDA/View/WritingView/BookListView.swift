@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookListView: View {
     @State var isSheetPresented: Bool = false
+    @State private var selectedBook: WritingBook = firstBook[0]
     
     var body: some View {
         GeometryReader { geo in
@@ -26,6 +27,9 @@ struct BookListView: View {
                     .padding(.leading, geo.size.width * 0.064)
             }
             .navigationBarHidden(true)
+            .fullScreenCover(isPresented: $isSheetPresented) {
+                    WordView(isSheetPresented: $isSheetPresented, selectedBook: selectedBook)
+            }
         }
     }
     
@@ -69,10 +73,8 @@ struct BookListView: View {
                             .resizableImage(width: size.width * 0.15)
                             .onTapGesture {
                                 // TODO: 코드 넣기
+                                selectedBook = firstBook[0]
                                 isSheetPresented = true
-                            }
-                            .fullScreenCover(isPresented: $isSheetPresented) {
-                                WordView(isSheetPresented: $isSheetPresented)
                             }
                         
                         // 단어 수, 책 권수
@@ -128,16 +130,14 @@ struct BookListView: View {
                     VStack(spacing: -size.height * 0.00485) {
                         // 나머지 책
                         HStack(spacing: size.width * 0.002) {
-                            ForEach(2..<6) { num in
-                                Image("book\(num)")
+                            ForEach(writingBooks) { book in
+                                Image(book.name)
                                     .resizableImage(width: size.width * 0.15)
                                     .onTapGesture {
                                         // TODO: 코드 넣기
+                                        selectedBook = book
+                                        isSheetPresented = true
                                     }
-                                    .fullScreenCover(isPresented: $isSheetPresented)
-                                {
-                                    WordView(isSheetPresented: $isSheetPresented)
-                                }
                             }
                         } .padding(.bottom, -size.height * 0.01)
                         
