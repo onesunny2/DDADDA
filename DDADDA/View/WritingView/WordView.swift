@@ -13,6 +13,7 @@ struct WordView: View {
     @State var isWriting: Bool = true
     // 현재 이미지 인덱스를 추적하는 상태 변수
     @State private var currentIndex = 0
+    @State var selectedBook: WritingBook
     
     var body: some View {
         NavigationStack {
@@ -85,22 +86,23 @@ struct WordView: View {
     @ViewBuilder
     func imageTextField(size: CGSize) -> some View {
         VStack {
-            Image(.fox)
-                .resizableImage(width: size.width * 0.28)
-            
-            ZStack(alignment: .leading) {
-                Image(.canvasBackground)
-                    .resizableImage(width: size.width * 0.7)
-                
-                HStack(spacing: size.width * 0.09) {
-                    Image(.voiceIcon)
-                        .padding(.bottom, 200)
-                    
-                    // TODO: 추후 데이터 갈아끼우기
-                    Image(foxAndGrapeWord[currentIndex])
-                } .padding(.leading, size.width * 0.05)
-            }
-        }
+               if currentIndex < selectedBook.items.count {
+                   Image(selectedBook.items[currentIndex].image)
+                       .resizableImage(width: size.width * 0.28)
+                   
+                   ZStack(alignment: .leading) {
+                       Image(.canvasBackground)
+                           .resizableImage(width: size.width * 0.7)
+                       
+                       HStack(spacing: size.width * 0.09) {
+                           Image(.voiceIcon)
+                               .padding(.bottom, 200)
+                           
+                           Image(selectedBook.items[currentIndex].word)
+                       } .padding(.leading, size.width * 0.05)
+                   }
+               }
+           }
     }
     
     // MARK: - 지우개 도구버튼
@@ -149,7 +151,10 @@ struct WordView: View {
                 
                 Button(action: {
                     withAnimation {
-                        currentIndex = (currentIndex + 1) % foxAndGrapeWord.count
+                        // 배열의 범위를 벗어나지 않도록 다음 인덱스를 계산
+                        if selectedBook.items.count > 0 {
+                            currentIndex = (currentIndex + 1) % selectedBook.items.count
+                        }
                     }
                 }, label: {
                     HStack(spacing: size.width * 0.012) {
@@ -174,8 +179,8 @@ struct WordView: View {
     }
 }
 
-#Preview {
-    @State var isSheetPresented: Bool = true
-    
-    return WordView(isSheetPresented: $isSheetPresented)
-}
+//#Preview {
+//    @State var isSheetPresented: Bool = true
+//
+//    return WordView(isSheetPresented: $isSheetPresented, selectedBook: WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox")]))
+//}
