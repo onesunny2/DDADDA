@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct BookListView: View {
-    @State var isSheetPresented: Bool = false
-    @State private var selectedBook: WritingBook = firstBook[0]
+    
+    @State private var selectedBook: WritingBook? = nil
     
     var body: some View {
         GeometryReader { geo in
@@ -27,9 +27,13 @@ struct BookListView: View {
                     .padding(.leading, geo.size.width * 0.064)
             }
             .navigationBarHidden(true)
-            .fullScreenCover(isPresented: $isSheetPresented) {
-                    WordView(isSheetPresented: $isSheetPresented, selectedBook: selectedBook)
-            }
+            .fullScreenCover(item: $selectedBook, onDismiss: {
+                            selectedBook = nil
+                        }) { book in
+                            WordView(selectedBook: book) {
+                                selectedBook = nil
+                            }
+                        }
         }
     }
     
@@ -74,7 +78,6 @@ struct BookListView: View {
                             .onTapGesture {
                                 // TODO: 코드 넣기
                                 selectedBook = firstBook[0]
-                                isSheetPresented = true
                             }
                         
                         // 단어 수, 책 권수
@@ -136,7 +139,6 @@ struct BookListView: View {
                                     .onTapGesture {
                                         // TODO: 코드 넣기
                                         selectedBook = book
-                                        isSheetPresented = true
                                     }
                             }
                         } .padding(.bottom, -size.height * 0.01)
