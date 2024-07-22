@@ -39,6 +39,7 @@ struct WordView: View {
                     
                     // 다음버튼
                     nextButton(size: geo.size)
+                    
                 }
             }
             .ignoresSafeArea(.all)
@@ -140,17 +141,17 @@ struct WordView: View {
     // MARK: - 다음으로 넘어가기 버튼
     @ViewBuilder
     func nextButton(size: CGSize) -> some View {
-        Button(action: {
-            withAnimation {
-                currentIndex = (currentIndex + 1) % foxAndGrapeWord.count
-            }
-        }, label: {
-            VStack {
+        VStack {
+            Spacer()
+            
+            HStack {
                 Spacer()
                 
-                HStack {
-                    Spacer()
-                    
+                Button(action: {
+                    withAnimation {
+                        currentIndex = (currentIndex + 1) % foxAndGrapeWord.count
+                    }
+                }, label: {
                     HStack(spacing: size.width * 0.012) {
                         Text("다음으로")
                             .font(.bigTitle2)
@@ -167,9 +168,9 @@ struct WordView: View {
                                 .foregroundStyle(.white)
                         }
                     }
-                } .padding(.trailing, size.width * 0.15)
-            } .padding(.bottom, size.height * 0.03)
-        })
+                })
+            } .padding(.trailing, size.width * 0.15)
+        } .padding(.bottom, size.height * 0.03)
     }
 }
 
