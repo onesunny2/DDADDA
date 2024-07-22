@@ -9,11 +9,11 @@ import SwiftUI
 
 struct WordView: View {
     
-    @Binding var isSheetPresented: Bool
     @State var isWriting: Bool = true
     // 현재 이미지 인덱스를 추적하는 상태 변수
     @State private var currentIndex = 0
     @State var selectedBook: WritingBook
+    var onDismiss: () -> Void
     
     var body: some View {
         NavigationStack {
@@ -63,7 +63,7 @@ struct WordView: View {
                         .font(.system(size: size.width * 0.04))
                 }
                 .onTapGesture {
-                    isSheetPresented = false
+                    onDismiss()
                 }
                 
                 ZStack {
