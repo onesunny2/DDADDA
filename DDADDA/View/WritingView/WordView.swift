@@ -40,7 +40,18 @@ struct WordView: View {
                     
                     // 다음버튼
                     nextButton(size: geo.size)
+                        .opacity(currentIndex == (selectedBook.items.count - 1) ? 0 : 100)
+                        .animation(.easeInOut(duration: 0), value: currentIndex)
                     
+                    // 이전버튼
+                    previousButton(size: geo.size)
+                        .opacity(currentIndex == 0 ? 0 : 100)
+                        .animation(.easeInOut(duration: 0), value: currentIndex)
+                    
+                    // 끝버튼
+                    endButton(size: geo.size)
+                        .opacity(currentIndex == (selectedBook.items.count - 1) ? 100 : 0)
+                        .animation(.easeInOut(duration: 0), value: currentIndex)
                 }
             }
             .ignoresSafeArea(.all)
@@ -177,10 +188,89 @@ struct WordView: View {
             } .padding(.trailing, size.width * 0.15)
         } .padding(.bottom, size.height * 0.03)
     }
+    
+    // MARK: - 이전으로 넘어가기 버튼
+    @ViewBuilder
+    func previousButton(size: CGSize) -> some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Button(action: {
+                    withAnimation {
+                        // 배열의 범위를 벗어나지 않도록 다음 인덱스를 계산
+                        if selectedBook.items.count > 0 {
+                            currentIndex = (currentIndex - 1) % selectedBook.items.count
+                        }
+                    }
+                }, label: {
+                    HStack(spacing: size.width * 0.012) {
+                        ZStack {
+                            Circle()
+                                .frame(width: size.width * 0.046)
+                                .foregroundStyle(.darkgray)
+                            
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: size.width * 0.02))
+                                .bold()
+                                .foregroundStyle(.white)
+                        }
+                        
+                        Text("이전으로")
+                            .font(.bigTitle2)
+                            .foregroundStyle(.darkgray)
+                    }
+                })
+                
+                Spacer()
+            } .padding(.leading, size.width * 0.15)
+        } .padding(.bottom, size.height * 0.03)
+    }
+    
+    // MARK: - 끝 버튼
+    @ViewBuilder
+    func endButton(size: CGSize) -> some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                Button(action: {
+                    withAnimation {
+                        // 배열의 범위를 벗어나지 않도록 다음 인덱스를 계산
+                        if selectedBook.items.count > 0 {
+                            currentIndex = (currentIndex + 1) % selectedBook.items.count
+                        }
+                        
+                        onDismiss()
+                    }
+                }, label: {
+                    HStack(spacing: size.width * 0.012) {
+                        Text("끝")
+                            .font(.bigTitle2)
+                            .foregroundStyle(.darkgray)
+                        
+                        ZStack {
+                            Circle()
+                                .frame(width: size.width * 0.046)
+                                .foregroundStyle(.darkgray)
+                            
+                            Image(systemName: "xmark")
+                                .font(.system(size: size.width * 0.02))
+                                .bold()
+                                .foregroundStyle(.white)
+                        }
+                    }
+                })
+            } .padding(.trailing, size.width * 0.15)
+        } .padding(.bottom, size.height * 0.03)
+
+    }
 }
 
-//#Preview {
-//    @State var isSheetPresented: Bool = true
-//
-//    return WordView(isSheetPresented: $isSheetPresented, selectedBook: WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox")]))
-//}
+#Preview {
+    @State var isSheetPresented: Bool = true
+
+    return WordView(selectedBook: WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox")]), onDismiss: {})
+}
