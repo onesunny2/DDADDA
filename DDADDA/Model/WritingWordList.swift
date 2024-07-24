@@ -21,21 +21,21 @@ struct WritingBook: Identifiable {
 }
 
 let firstBook: [WritingBook] = [
-    WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit")
+    WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
     ])
 ]
 
 let writingBooks: [WritingBook] = [
-    WritingBook(name: "book2", items: [WritingItem(word: "crayon", image: "crayon"), WritingItem(word: "eraser", image: "eraser")
+    WritingBook(name: "book2", items: [WritingItem(word: "crayon", image: "crayon"), WritingItem(word: "eraser", image: "eraser"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
     ]),
     
-    WritingBook(name: "book3", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit")
+    WritingBook(name: "book3", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
     ]),
     
-    WritingBook(name: "book4", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit")
+    WritingBook(name: "book4", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
     ]),
     
-    WritingBook(name: "book5", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit")
+    WritingBook(name: "book5", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
     ])
 ]
 

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import PencilKit
+import UIKit
 
 struct WordView: View {
     
@@ -14,6 +16,7 @@ struct WordView: View {
     @State private var currentIndex = 0
     let selectedBook: WritingBook
     var onDismiss: () -> Void
+    @State var canvas = PKCanvasView()
     
     var body: some View {
         NavigationStack {
@@ -24,12 +27,14 @@ struct WordView: View {
                         .scaledToFill()
                         .frame(height: geo.size.height)
                     
+                    // 여우 그림, 글쓰기 영역
+                    imageTextField(size: geo.size)
+                    
+                    WordCanvasView(canvas: $canvas, isWriting: $isWriting)
+                    
                     // 창닫기, 앨범 저장하기
                     closeShareButton(size: geo.size)
                         .padding(.top, geo.size.height * 0.055)
-                    
-                    // 여우 그림, 글쓰기 영역
-                    imageTextField(size: geo.size)
                     
                     // 펜슬킷 도구 영역
                     VStack(spacing: -geo.size.height * 0.07) {
@@ -166,6 +171,7 @@ struct WordView: View {
                         if selectedBook.items.count > 0 {
                             currentIndex = (currentIndex + 1) % selectedBook.items.count
                         }
+                        canvas.drawing = PKDrawing()
                     }
                 }, label: {
                     HStack(spacing: size.width * 0.012) {
@@ -202,6 +208,8 @@ struct WordView: View {
                         if selectedBook.items.count > 0 {
                             currentIndex = (currentIndex - 1) % selectedBook.items.count
                         }
+                        
+                        canvas.drawing = PKDrawing()
                     }
                 }, label: {
                     HStack(spacing: size.width * 0.012) {
@@ -266,6 +274,30 @@ struct WordView: View {
             } .padding(.trailing, size.width * 0.15)
         } .padding(.bottom, size.height * 0.03)
 
+    }
+}
+
+// MARK: - PKCanvasView
+struct WordCanvasView: UIViewRepresentable {
+    
+    @Binding var canvas: PKCanvasView
+    @Binding var isWriting: Bool
+    
+    var ink: PKInkingTool {
+        PKInkingTool(.pencil, color: UIColor(.white), width: 15)
+    }
+    let eraser = PKEraserTool(.bitmap, width: 40)
+    
+    func makeUIView(context: Context) -> PKCanvasView {
+        canvas.drawingPolicy = .anyInput
+        canvas.tool = isWriting ? ink : eraser
+        canvas.backgroundColor = .clear
+        
+        return canvas
+    }
+    
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        uiView.tool = isWriting ? ink : eraser
     }
 }
 
