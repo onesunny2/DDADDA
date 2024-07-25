@@ -17,6 +17,7 @@ struct WordView: View {
     let selectedBook: WritingBook
     var onDismiss: () -> Void
     @State var canvas = PKCanvasView()
+    @State private var writeAreaImage = UIImage(named: "canvasBackground")!
     
     var body: some View {
         NavigationStack {
@@ -30,7 +31,7 @@ struct WordView: View {
                     // 여우 그림, 글쓰기 영역
                     imageTextField(size: geo.size)
                     
-                    WordCanvasView(canvas: $canvas, isWriting: $isWriting)
+                    
                     
                     // 창닫기, 앨범 저장하기
                     closeShareButton(size: geo.size)
@@ -102,23 +103,24 @@ struct WordView: View {
     @ViewBuilder
     func imageTextField(size: CGSize) -> some View {
         VStack {
-               if currentIndex < selectedBook.items.count {
-                   Image(selectedBook.items[currentIndex].image)
-                       .resizableImage(width: size.width * 0.28)
-                   
-                   ZStack(alignment: .leading) {
-                       Image(.canvasBackground)
-                           .resizableImage(width: size.width * 0.7)
-                       
-                       HStack(spacing: size.width * 0.09) {
-                           Image(.voiceIcon)
-                               .padding(.bottom, 200)
-                           
-                           Image(selectedBook.items[currentIndex].word)
-                       } .padding(.leading, size.width * 0.05)
-                   }
-               }
-           }
+            if currentIndex < selectedBook.items.count {
+                Image(selectedBook.items[currentIndex].image)
+                    .resizableImage(width: size.width * 0.28)
+                
+                ZStack(alignment: .leading) {
+                    WordCanvasView(writeAreaImage: $writeAreaImage, canvas: $canvas, isWriting: $isWriting)
+                        .frame(width: writeAreaImage.size.width, height: writeAreaImage.size.height)
+//                        .resizableImage(width: size.width * 0.7)
+                    
+                    HStack(spacing: size.width * 0.09) {
+                        Image(.voiceIcon)
+                            .padding(.bottom, 200)
+                        
+                        Image(selectedBook.items[currentIndex].word)
+                    } .padding(.leading, size.width * 0.05)
+                }
+            }
+        }
     }
     
     // MARK: - 지우개 도구버튼
@@ -273,13 +275,28 @@ struct WordView: View {
                 })
             } .padding(.trailing, size.width * 0.15)
         } .padding(.bottom, size.height * 0.03)
-
+        
     }
 }
 
 // MARK: - PKCanvasView
 struct WordCanvasView: UIViewRepresentable {
+    class Coordinator: NSObject, PKCanvasViewDelegate {
+        var parent: WordCanvasView
+
+                init(_ parent: WordCanvasView) {
+                    self.parent = parent
+                }
+
+                func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+                    // Handle drawing changes if needed
+                }    }
     
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    @Binding var writeAreaImage: UIImage
     @Binding var canvas: PKCanvasView
     @Binding var isWriting: Bool
     
@@ -289,9 +306,20 @@ struct WordCanvasView: UIViewRepresentable {
     let eraser = PKEraserTool(.bitmap, width: 40)
     
     func makeUIView(context: Context) -> PKCanvasView {
+        canvas.delegate = context.coordinator
         canvas.drawingPolicy = .anyInput
         canvas.tool = isWriting ? ink : eraser
         canvas.backgroundColor = .clear
+        
+        // Set the desired frame or constraints based on the image size
+        canvas.frame = CGRect(origin: .zero, size: writeAreaImage.size)
+        
+        // Add the image as a background
+        let imageView = UIImageView(image: writeAreaImage)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = canvas.bounds
+        canvas.addSubview(imageView)
+        canvas.sendSubviewToBack(imageView)
         
         return canvas
     }
@@ -303,6 +331,6 @@ struct WordCanvasView: UIViewRepresentable {
 
 #Preview {
     @State var isSheetPresented: Bool = true
-
+    
     return WordView(selectedBook: WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox")]), onDismiss: {})
 }
