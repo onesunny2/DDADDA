@@ -21,21 +21,21 @@ struct WritingBook: Identifiable {
 }
 
 let firstBook: [WritingBook] = [
-    WritingBook(name: "book1", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
+    WritingBook(name: "book1", items: [WritingItem(word: "Book1_Word01Font", image: "Book1_Word01"), WritingItem(word: "Book1_Word02Font", image: "Book1_Word02"), WritingItem(word: "Book1_Word03Font", image: "Book1_Word03")
     ])
 ]
 
 let writingBooks: [WritingBook] = [
-    WritingBook(name: "book2", items: [WritingItem(word: "crayon", image: "crayon"), WritingItem(word: "eraser", image: "eraser"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
+    WritingBook(name: "book2", items: [WritingItem(word: "Book2_Word01Font", image: "Book2_Word01"), WritingItem(word: "Book2_Word02Font", image: "Book2_Word02"), WritingItem(word: "Book2_Word03Font", image: "Book2_Word03")
     ]),
     
-    WritingBook(name: "book3", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
+    WritingBook(name: "book3", items: [WritingItem(word: "Book3_Word01Font", image: "Book3_Word01"), WritingItem(word: "Book3_Word02Font", image: "Book3_Word02"), WritingItem(word: "Book3_Word03Font", image: "Book3_Word03")
     ]),
     
-    WritingBook(name: "book4", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
+    WritingBook(name: "book4", items: [WritingItem(word: "Book4_Word01Font", image: "Book4_Word01"), WritingItem(word: "Book4_Word02Font", image: "Book4_Word02"), WritingItem(word: "Book4_Word03Font", image: "Book4_Word03")
     ]),
     
-    WritingBook(name: "book5", items: [WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "rabbitFont", image: "rabbit"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox"), WritingItem(word: "foxFont", image: "fox")
+    WritingBook(name: "book5", items: [WritingItem(word: "Book5_Word01Font", image: "Book5_Word01"), WritingItem(word: "Book5_Word02Font", image: "Book5_Word02"), WritingItem(word: "Book5_Word03Font", image: "Book5_Word03")
     ])
 ]
 
