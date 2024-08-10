@@ -31,8 +31,6 @@ struct WordView: View {
                     // 여우 그림, 글쓰기 영역
                     imageTextField(size: geo.size)
                     
-                    
-                    
                     // 창닫기, 앨범 저장하기
                     closeShareButton(size: geo.size)
                         .padding(.top, geo.size.height * 0.055)
