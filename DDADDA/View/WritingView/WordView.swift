@@ -103,7 +103,7 @@ struct WordView: View {
         VStack {
             if currentIndex < selectedBook.items.count {
                 Image(selectedBook.items[currentIndex].image)
-                    .resizableImage(width: size.width * 0.28)
+                    .resizableImage(width: size.width * 0.33)
                 
                 ZStack(alignment: .leading) {
                     WordCanvasView(writeAreaImage: $writeAreaImage, canvas: $canvas, isWriting: $isWriting)
@@ -114,8 +114,12 @@ struct WordView: View {
                         Image(.voiceIcon)
                             .padding(.bottom, 200)
                         
-                        Image(selectedBook.items[currentIndex].word)
+//                        Image(selectedBook.items[currentIndex].word)
                     } .padding(.leading, size.width * 0.05)
+                    
+                    Image(selectedBook.items[currentIndex].word)
+                        .resizableImage(width: size.width * 0.5)
+                        .padding(.leading, size.width * 0.07)
                 }
             }
         }
