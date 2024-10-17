@@ -19,43 +19,59 @@ struct WordView: View {
     @State var canvas = PKCanvasView()
     @State private var writeAreaImage = UIImage(named: "canvasBackground")!
     
+    @State var isSelectedAlbum: Bool = false
+    
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
                 ZStack {
-                    Image(.blurBackground)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: geo.size.height)
-                    
-                    // 여우 그림, 글쓰기 영역
-                    imageTextField(size: geo.size)
-                    
-                    // 창닫기, 앨범 저장하기
-                    closeShareButton(size: geo.size)
-                        .padding(.top, geo.size.height * 0.055)
-                    
-                    // 펜슬킷 도구 영역
-                    VStack(spacing: -geo.size.height * 0.07) {
-                        eraserButton(size: geo.size)
+                    ZStack {
+                        Image(.blurBackground)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: geo.size.height)
                         
-                        pencilButton(size: geo.size)
-                    } .padding(.bottom, geo.size.height * 0.08)
+                        // 여우 그림, 글쓰기 영역
+                        imageTextField(size: geo.size)
+                        
+                        // 창닫기, 앨범 저장하기
+                        closeShareButton(size: geo.size)
+                            .padding(.top, geo.size.height * 0.055)
+                        
+                        
+                        // 펜슬킷 도구 영역
+                        VStack(spacing: -geo.size.height * 0.07) {
+                            eraserButton(size: geo.size)
+                            
+                            pencilButton(size: geo.size)
+                        } .padding(.bottom, geo.size.height * 0.08)
+                        
+                        // 다음버튼
+                        nextButton(size: geo.size)
+                            .opacity(currentIndex == (selectedBook.items.count - 1) ? 0 : 100)
+                            .animation(.easeInOut(duration: 0), value: currentIndex)
+                        
+                        // 이전버튼
+                        previousButton(size: geo.size)
+                            .opacity(currentIndex == 0 ? 0 : 100)
+                            .animation(.easeInOut(duration: 0), value: currentIndex)
+                        
+                        // 끝버튼
+                        endButton(size: geo.size)
+                            .opacity(currentIndex == (selectedBook.items.count - 1) ? 100 : 0)
+                            .animation(.easeInOut(duration: 0), value: currentIndex)
+                        
+                        
+                    }
+                    .overlay(
+                        isSelectedAlbum ? Color.black.opacity(0.5) :  nil
+                    )
                     
-                    // 다음버튼
-                    nextButton(size: geo.size)
-                        .opacity(currentIndex == (selectedBook.items.count - 1) ? 0 : 100)
-                        .animation(.easeInOut(duration: 0), value: currentIndex)
-                    
-                    // 이전버튼
-                    previousButton(size: geo.size)
-                        .opacity(currentIndex == 0 ? 0 : 100)
-                        .animation(.easeInOut(duration: 0), value: currentIndex)
-                    
-                    // 끝버튼
-                    endButton(size: geo.size)
-                        .opacity(currentIndex == (selectedBook.items.count - 1) ? 100 : 0)
-                        .animation(.easeInOut(duration: 0), value: currentIndex)
+                    // (임시) 앨범 경고문
+                    if isSelectedAlbum {
+                        showAlertForAlbum(size: geo.size)
+                    }
                 }
             }
             .ignoresSafeArea(.all)
@@ -67,30 +83,38 @@ struct WordView: View {
     func closeShareButton(size: CGSize) -> some View {
         VStack {
             HStack(spacing: size.width * 0.7) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 40)
-                        .foregroundStyle(.white)
-                        .frame(width: size.width * 0.09, height: size.width * 0.09)
-                    
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.darkTree)
-                        .bold()
-                        .font(.system(size: size.width * 0.04))
-                }
-                .onTapGesture {
-                    onDismiss()
-                }
                 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 40)
-                        .foregroundStyle(.darkTree)
-                        .frame(width: size.width * 0.09, height: size.width * 0.09)
-                    
-                    Image(systemName: "square.and.arrow.down")
-                        .foregroundStyle(.white)
-                        .font(.system(size: size.width * 0.05))
-                        .padding(.bottom, size.height * 0.013)
-                }
+                // 창닫기
+                Button(action: {
+                    onDismiss()
+                }, label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 40)
+                            .foregroundStyle(.white)
+                            .frame(width: size.width * 0.09, height: size.width * 0.09)
+                        
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.darkTree)
+                            .bold()
+                            .font(.system(size: size.width * 0.04))
+                    }
+                })
+                
+                // 앨범 저장하기
+                Button(action: {
+                    isSelectedAlbum = true
+                }, label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 40)
+                            .foregroundStyle(.darkTree)
+                            .frame(width: size.width * 0.09, height: size.width * 0.09)
+                        
+                        Image(systemName: "square.and.arrow.down")
+                            .foregroundStyle(.white)
+                            .font(.system(size: size.width * 0.05))
+                            .padding(.bottom, size.height * 0.013)
+                    }
+                })
             }
             
             Spacer()
@@ -108,18 +132,17 @@ struct WordView: View {
                 ZStack(alignment: .leading) {
                     WordCanvasView(writeAreaImage: $writeAreaImage, canvas: $canvas, isWriting: $isWriting)
                         .frame(width: writeAreaImage.size.width, height: writeAreaImage.size.height)
-//                        .resizableImage(width: size.width * 0.7)
                     
-                    HStack(spacing: size.width * 0.09) {
+                    HStack(spacing: size.width * 0.02) {
                         Image(.voiceIcon)
                             .padding(.bottom, 200)
                         
-//                        Image(selectedBook.items[currentIndex].word)
+                        Image(selectedBook.items[currentIndex].word)
+                            .resizableImage(width: size.width * 0.5)
                     } .padding(.leading, size.width * 0.05)
+                        .allowsHitTesting(false)
                     
-                    Image(selectedBook.items[currentIndex].word)
-                        .resizableImage(width: size.width * 0.5)
-                        .padding(.leading, size.width * 0.07)
+                    
                 }
             }
         }
@@ -279,20 +302,54 @@ struct WordView: View {
         } .padding(.bottom, size.height * 0.03)
         
     }
+    
+    
+    // MARK: - (사진 앨범) 임시 경고 문구
+    @ViewBuilder
+    func showAlertForAlbum(size: CGSize) -> some View {
+        ZStack {
+            VStack(spacing: 0) {
+                ZStack {
+                    UnevenRoundedRectangle(topLeadingRadius: 32, topTrailingRadius: 32)
+                        .frame(width: 520, height: 185)
+                        .foregroundStyle(.white)
+                    
+                    Text("'내가 그린 그림 저장하기!'\n기능은 다음시간에 만나요:)")
+                        .font(.badge1)
+                        .foregroundStyle(.darkgray)
+                }
+                
+                Button(action: {
+                    isSelectedAlbum = false
+                }, label: {
+                    ZStack {
+                        UnevenRoundedRectangle(bottomLeadingRadius: 32, bottomTrailingRadius: 32)
+                            .frame(width: 520, height: 74)
+                            .foregroundStyle(.buttonDark)
+                        
+                        Text("닫기")
+                            .font(.badge2)
+                            .foregroundStyle(.darkTree)
+                    }
+                })
+            }
+        }
+
+    }
 }
 
 // MARK: - PKCanvasView
 struct WordCanvasView: UIViewRepresentable {
     class Coordinator: NSObject, PKCanvasViewDelegate {
         var parent: WordCanvasView
-
-                init(_ parent: WordCanvasView) {
-                    self.parent = parent
-                }
-
-                func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-                    // Handle drawing changes if needed
-                }    }
+        
+        init(_ parent: WordCanvasView) {
+            self.parent = parent
+        }
+        
+        func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+            // Handle drawing changes if needed
+        }    }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
