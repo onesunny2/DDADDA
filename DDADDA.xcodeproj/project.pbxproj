@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4315FD052C912CBC0071D4CE /* SketchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4315FD042C912CBC0071D4CE /* SketchView.swift */; };
+		436423FA2CC16C080007E604 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423F92CC16C080007E604 /* Extension+UIView.swift */; };
 		439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC5F2C35A0270057E352 /* DDADDAApp.swift */; };
 		439CBC622C35A0270057E352 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC612C35A0270057E352 /* Persistence.swift */; };
 		439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC632C35A0270057E352 /* DDADDA.xcdatamodeld */; };
@@ -21,7 +23,6 @@
 		439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC9B2C3714970057E352 /* Extension+Font.swift */; };
 		439CBCE32C3FA33E0057E352 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 439CBCE22C3FA33E0057E352 /* .gitignore */; };
 		439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE42C4445940057E352 /* Extension+Image.swift */; };
-		439CBCE92C44C9CE0057E352 /* SketchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCE82C44C9CE0057E352 /* SketchView.swift */; };
 		439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */; };
 		43FFECC92C4A06AE0022FFA5 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECC82C4A06AE0022FFA5 /* BookListView.swift */; };
 		43FFECCB2C4A06F30022FFA5 /* WordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FFECCA2C4A06F30022FFA5 /* WordView.swift */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4315FD042C912CBC0071D4CE /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
+		436423F92CC16C080007E604 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		439CBC5C2C35A0270057E352 /* DDADDA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDADDA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CBC5F2C35A0270057E352 /* DDADDAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDADDAApp.swift; sourceTree = "<group>"; };
 		439CBC612C35A0270057E352 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -66,7 +69,6 @@
 		439CBC9B2C3714970057E352 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		439CBCE22C3FA33E0057E352 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		439CBCE42C4445940057E352 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
-		439CBCE82C44C9CE0057E352 /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
 		439CBCED2C45409B0057E352 /* BackbuttonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbuttonCustom.swift; sourceTree = "<group>"; };
 		43FFECC82C4A06AE0022FFA5 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		43FFECCA2C4A06F30022FFA5 /* WordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4315FD032C912C9F0071D4CE /* SketchView */ = {
+			isa = PBXGroup;
+			children = (
+				4315FD042C912CBC0071D4CE /* SketchView.swift */,
+			);
+			path = SketchView;
+			sourceTree = "<group>";
+		};
 		439CBC532C35A0270057E352 = {
 			isa = PBXGroup;
 			children = (
@@ -167,9 +177,9 @@
 		439CBC8F2C35A0A90057E352 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4315FD032C912C9F0071D4CE /* SketchView */,
 				43FFECC72C4A06710022FFA5 /* WritingView */,
 				439CBC922C35A0D20057E352 /* SelectView.swift */,
-				439CBCE82C44C9CE0057E352 /* SketchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +215,7 @@
 				439CBC9B2C3714970057E352 /* Extension+Font.swift */,
 				439CBCE42C4445940057E352 /* Extension+Image.swift */,
 				43FFECCE2C4C35750022FFA5 /* Extention+View.swift */,
+				436423F92CC16C080007E604 /* Extension+UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -359,11 +370,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				439CBCE92C44C9CE0057E352 /* SketchView.swift in Sources */,
 				439CBC9C2C3714970057E352 /* Extension+Font.swift in Sources */,
 				43FFECCF2C4C35750022FFA5 /* Extention+View.swift in Sources */,
 				439CBC932C35A0D20057E352 /* SelectView.swift in Sources */,
 				439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */,
+				4315FD052C912CBC0071D4CE /* SketchView.swift in Sources */,
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,
 				439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */,
 				43FFECCB2C4A06F30022FFA5 /* WordView.swift in Sources */,
@@ -371,6 +382,7 @@
 				43FFECC92C4A06AE0022FFA5 /* BookListView.swift in Sources */,
 				439CBC622C35A0270057E352 /* Persistence.swift in Sources */,
 				439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */,
+				436423FA2CC16C080007E604 /* Extension+UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +539,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DDADDA/DDADDA.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DDADDA/Preview Content\"";
@@ -552,6 +565,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = LegendOfJelTa.DDADDA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -566,6 +580,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DDADDA/DDADDA.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DDADDA/Preview Content\"";
@@ -591,6 +606,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = LegendOfJelTa.DDADDA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;

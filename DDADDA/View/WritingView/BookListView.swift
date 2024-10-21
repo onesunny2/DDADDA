@@ -95,7 +95,7 @@ struct BookListView: View {
                                             .foregroundStyle(.white)
                                     }.padding(.leading, size.width * 0.024)
                                     // TODO: 나중에 데이터 갈아끼우기
-                                    Text("2권")
+                                    Text("0권")
                                         .font(.itemTitle)
                                         .foregroundStyle(.white)
                                 }
@@ -114,7 +114,7 @@ struct BookListView: View {
                                             .foregroundStyle(.white)
                                     } .padding(.leading, size.width * 0.024)
                                     // TODO: 나중에 데이터 갈아끼우기
-                                    Text("45개")
+                                    Text("0개")
                                         .font(.itemTitle)
                                         .foregroundStyle(.white)
                                 }
