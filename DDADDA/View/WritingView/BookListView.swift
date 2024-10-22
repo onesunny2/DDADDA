@@ -20,11 +20,11 @@ struct BookListView: View {
                     .ignoresSafeArea(.all)
                     .frame(height: geo.size.height)
                 
-                bookList(size: geo.size)
-                
                 // 뒤로가기 버튼 커스텀
                 backbutton(size: geo.size)
                     .padding(.leading, geo.size.width * 0.064)
+                
+                bookList(size: geo.size)
             }
             .navigationBarHidden(true)
             .fullScreenCover(item: $selectedBook, onDismiss: {
@@ -38,14 +38,12 @@ struct BookListView: View {
     }
     
     // MARK: - 책 리스트 화면
-    @ViewBuilder
     func bookList(size: CGSize) -> some View {
         ZStack(alignment: .center) {
             // 하얀색 둥근 사각형 테두리
             RoundedRectangle(cornerRadius: 38)
                 .foregroundStyle(.white)
                 .frame(width: size.width * 0.87, height: size.height * 0.7)
-                .position(x: size.width / 2, y: size.height / 2)
                 .shadow(color: .black.opacity(0.2), radius: 24, x: 4, y: 7)
             
             // 숲 속 도서관 타이틀
@@ -58,10 +56,10 @@ struct BookListView: View {
                             .font(.bigTitle2)
                     }
                     Spacer()
-                } .padding(.top, size.height * 0.16)
+                } .padding(.top, size.height * 0.14)
                 
                 Spacer()
-            } .padding(.leading, size.width * 0.09)
+            } .padding(.leading, size.width * 0.1)
             
             // 나무 판자 배경
             Image(.libraryWood)
@@ -154,8 +152,8 @@ struct BookListView: View {
             }
             .padding(.top, size.height * 0.04)
             .frame(width: size.width * 0.87, height: size.height * 0.55)
-            .position(x: size.width * 0.5, y: size.height * 0.5)
         }
+        .padding(.top, 40)
     }
     
     // MARK: - 뒤로가기 버튼 커스텀
