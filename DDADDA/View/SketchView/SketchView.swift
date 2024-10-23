@@ -11,9 +11,9 @@ struct SketchView: View {
     @State var isCanvasOn: Bool = false
     @State var myBookNum: Int = 0
     @State var allBookNum: Int = 10
-    @State var sketchName: String = "라쿤"
-    @State var sketchImgName: String = "raccon"
     @State var sketchDate: String = "2024년 10월 22일"
+    @State var currentCategory: String = "animal"
+    @State var currentSketchArray: [MenuCategory] = animalSketch
     
     var body: some View {
         GeometryReader { geo in
@@ -24,37 +24,12 @@ struct SketchView: View {
                     .ignoresSafeArea(.all)
                     .frame(height: geo.size.height)
                 
-                backAndMenuButton(size: geo.size)
-                
-                VStack(alignment: .leading) {
-                    VStack(spacing: -30) {
-                        Image(.sketchbookSpring)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: geo.size.width * 0.41)
-                            .zIndex(1)
-                        
-                        ZStack {
-                            Rectangle()
-                                .foregroundStyle(.white)
-                                .frame(width: geo.size.width * 0.39, height: geo.size.height * 0.33)
-                            
-                            Image("\(sketchImgName)")
-                                .resizable()
-                                .frame(width: geo.size.height * 0.33, height: geo.size.height * 0.33)
-                                .aspectRatio(contentMode: .fit)
-                                
-                        }
-                    }
+                VStack {
+                    backAndMenuButton(size: geo.size)
                     
-                    Text("\(sketchName)")
-                        .font(.bigTitle1)
-                        .padding(.leading, 10)
+                    Spacer()
                     
-                    Text("\(sketchDate)")
-                        .font(.subTitle)
-                        .foregroundStyle(.white)
-                        .padding(.leading, 10)
+                    sketchBook(size: geo.size)
                 }
             }
             .navigationBarHidden(true)
@@ -135,11 +110,19 @@ struct SketchView: View {
                         Text("동물")
                             .font(.badge2)
                     }
+                    .onTapGesture {
+                        currentCategory = "animal"
+                        currentSketchArray = animalSketch
+                    }
                     
                     VStack {
                         Image(.ladyBugIcon)
                         Text("곤충")
                             .font(.badge2)
+                    }
+                    .onTapGesture {
+                        currentCategory = "insect"
+                        currentSketchArray = insectSketch
                     }
                 }
             }
@@ -150,6 +133,46 @@ struct SketchView: View {
         .padding(.top, 50)
     }
     
+    
+    // MARK: - 스케치북
+    @ViewBuilder
+    func sketchBook(size: CGSize) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 30) {
+                ForEach(currentSketchArray) { sketch in
+                    VStack(alignment: .leading) {
+                        VStack(spacing: -30) {
+                            Image(.sketchbookSpring)
+                                .frame(width: size.width * 0.41)
+                                .zIndex(1)
+                            
+                            ZStack {
+                                Rectangle()
+                                    .foregroundStyle(.white)
+                                    .frame(width: size.width * 0.39, height: size.height * 0.33)
+                                
+                                Image("\(sketch.sketchName)")
+                                    .resizable()
+                                    .frame(width: size.height * 0.33, height: size.height * 0.33)
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                        }
+                        
+                        Text("\(sketch.name)")
+                            .font(.bigTitle1)
+                            .padding(.leading, 10)
+                        
+                        Text("\(sketchDate)")
+                            .font(.subTitle)
+                            .foregroundStyle(.white)
+                            .padding(.leading, 10)
+                    }
+                    .padding(.bottom, size.height * 0.19)
+                }
+            }
+        }
+        .padding(.leading, 84)
+    }
     
     // MARK: - 날짜 변환 함수
     func todayDate() -> String {
