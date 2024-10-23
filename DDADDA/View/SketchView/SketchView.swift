@@ -14,6 +14,7 @@ struct SketchView: View {
     @State var sketchDate: String = "2024년 10월 22일"
     @State var currentCategory: String = "animal"
     @State var currentSketchArray: [MenuCategory] = animalSketch
+    @State var selectSketch: String = ""
     
     var body: some View {
         GeometryReader { geo in
@@ -34,7 +35,7 @@ struct SketchView: View {
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $isCanvasOn, content: {
-                
+                DrawingView(selectSketch: $selectSketch)
             })
         }
     }
@@ -156,6 +157,10 @@ struct SketchView: View {
                                     .frame(width: size.height * 0.33, height: size.height * 0.33)
                                     .aspectRatio(contentMode: .fit)
                             }
+                        }
+                        .onTapGesture {
+                            isCanvasOn = true
+                            selectSketch = sketch.sketchName
                         }
                         
                         Text("\(sketch.name)")
