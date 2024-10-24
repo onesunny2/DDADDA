@@ -82,7 +82,7 @@ struct WordView: View {
     @ViewBuilder
     func closeShareButton(size: CGSize) -> some View {
         VStack {
-            HStack(spacing: size.width * 0.7) {
+            HStack/*(spacing: size.width * 0.7)*/ {
                 
                 // 창닫기
                 Button(action: {
@@ -101,21 +101,24 @@ struct WordView: View {
                 })
                 
                 // 앨범 저장하기
-                Button(action: {
-                    isSelectedAlbum = true
-                }, label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 40)
-                            .foregroundStyle(.darkTree)
-                            .frame(width: size.width * 0.09, height: size.width * 0.09)
-                        
-                        Image(systemName: "square.and.arrow.down")
-                            .foregroundStyle(.white)
-                            .font(.system(size: size.width * 0.05))
-                            .padding(.bottom, size.height * 0.013)
-                    }
-                })
+//                Button(action: {
+//                    isSelectedAlbum = true
+//                }, label: {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 40)
+//                            .foregroundStyle(.darkTree)
+//                            .frame(width: size.width * 0.09, height: size.width * 0.09)
+//                        
+//                        Image(systemName: "square.and.arrow.down")
+//                            .foregroundStyle(.white)
+//                            .font(.system(size: size.width * 0.05))
+//                            .padding(.bottom, size.height * 0.013)
+//                    }
+//                })
+                
+                Spacer()
             }
+            .padding(.leading, 84)
             
             Spacer()
         }

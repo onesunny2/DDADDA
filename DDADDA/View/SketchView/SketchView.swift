@@ -11,10 +11,11 @@ struct SketchView: View {
     @State var isCanvasOn: Bool = false
     @State var myBookNum: Int = 0
     @State var allBookNum: Int = 10
-    @State var sketchDate: String = "2024년 10월 22일"
+    @State var sketchDate: String = ""
     @State var currentCategory: String = "animal"
     @State var currentSketchArray: [MenuCategory] = animalSketch
     @State var selectSketch: String = ""
+    @State var selectedSketchName: String = ""
     
     var body: some View {
         GeometryReader { geo in
@@ -35,7 +36,7 @@ struct SketchView: View {
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $isCanvasOn, content: {
-                DrawingView(selectSketch: $selectSketch)
+                DrawingView(selectSketch: $selectSketch, selectedSketchName: $selectedSketchName, isCanvasOn: $isCanvasOn)
             })
         }
     }
@@ -154,13 +155,14 @@ struct SketchView: View {
                                 
                                 Image("\(sketch.sketchName)")
                                     .resizable()
-                                    .frame(width: size.height * 0.33, height: size.height * 0.33)
                                     .aspectRatio(contentMode: .fit)
+                                    .frame(width: size.height * 0.3)
                             }
                         }
                         .onTapGesture {
                             isCanvasOn = true
                             selectSketch = sketch.sketchName
+                            selectedSketchName = sketch.name
                         }
                         
                         Text("\(sketch.name)")
