@@ -11,6 +11,7 @@
 		436423FA2CC16C080007E604 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423F92CC16C080007E604 /* Extension+UIView.swift */; };
 		436423FC2CC7EAC20007E604 /* SketchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423FB2CC7EAC20007E604 /* SketchList.swift */; };
 		436423FE2CC927590007E604 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423FD2CC927590007E604 /* DrawingView.swift */; };
+		436424002CCA25970007E604 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423FF2CCA25970007E604 /* ColorModel.swift */; };
 		439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC5F2C35A0270057E352 /* DDADDAApp.swift */; };
 		439CBC622C35A0270057E352 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC612C35A0270057E352 /* Persistence.swift */; };
 		439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 439CBC632C35A0270057E352 /* DDADDA.xcdatamodeld */; };
@@ -54,6 +55,7 @@
 		436423F92CC16C080007E604 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		436423FB2CC7EAC20007E604 /* SketchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchList.swift; sourceTree = "<group>"; };
 		436423FD2CC927590007E604 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		436423FF2CCA25970007E604 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		439CBC5C2C35A0270057E352 /* DDADDA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDADDA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CBC5F2C35A0270057E352 /* DDADDAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDADDAApp.swift; sourceTree = "<group>"; };
 		439CBC612C35A0270057E352 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				43FFECD02C4D3B6F0022FFA5 /* WritingWordList.swift */,
 				436423FB2CC7EAC20007E604 /* SketchList.swift */,
+				436423FF2CCA25970007E604 /* ColorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				43FFECD12C4D3B6F0022FFA5 /* WritingWordList.swift in Sources */,
 				436423FC2CC7EAC20007E604 /* SketchList.swift in Sources */,
 				43FFECC92C4A06AE0022FFA5 /* BookListView.swift in Sources */,
+				436424002CCA25970007E604 /* ColorModel.swift in Sources */,
 				439CBC622C35A0270057E352 /* Persistence.swift in Sources */,
 				436423FE2CC927590007E604 /* DrawingView.swift in Sources */,
 				439CBCEE2C45409B0057E352 /* BackbuttonCustom.swift in Sources */,

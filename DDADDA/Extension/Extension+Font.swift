@@ -32,6 +32,10 @@ extension Font {
         return santokkiFont(size: 42)
     }
     
+    static var bigTitle3: Font {
+        return santokkiFont2(size: 42)
+    }
+    
     static var badge1: Font {
         return santokkiFont2(size: 33)
     }
