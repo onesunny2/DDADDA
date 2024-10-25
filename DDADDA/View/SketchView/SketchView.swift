@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct SketchView: View {
+    @State var sketchViewModel: SketchViewModel = SketchViewModel()
     @State var isCanvasOn: Bool = false
     @State var myBookNum: Int = 0
     @State var allBookNum: Int = 10
-    @State var sketchDate: String = ""
+    @State var saveDate: String = " "
     @State var currentCategory: String = "animal"
-    @State var currentSketchArray: [MenuCategory] = animalSketch
     @State var selectSketch: String = ""
     @State var selectedSketchName: String = ""
+    @State var isAnimal: Bool = true
+    @State var isRefreshed: Bool = false
     
     var body: some View {
         GeometryReader { geo in
@@ -36,7 +38,7 @@ struct SketchView: View {
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $isCanvasOn, content: {
-                DrawingView(selectSketch: $selectSketch, selectedSketchName: $selectedSketchName, isCanvasOn: $isCanvasOn)
+                DrawingView(sketchViewModel: sketchViewModel, selectSketch: $selectSketch, selectedSketchName: $selectedSketchName, isCanvasOn: $isCanvasOn, saveDate: $saveDate)
             })
         }
     }
@@ -113,8 +115,7 @@ struct SketchView: View {
                             .font(.badge2)
                     }
                     .onTapGesture {
-                        currentCategory = "animal"
-                        currentSketchArray = animalSketch
+                        isAnimal = true
                     }
                     
                     VStack {
@@ -123,8 +124,7 @@ struct SketchView: View {
                             .font(.badge2)
                     }
                     .onTapGesture {
-                        currentCategory = "insect"
-                        currentSketchArray = insectSketch
+                        isAnimal = false
                     }
                 }
             }
@@ -141,52 +141,64 @@ struct SketchView: View {
     func sketchBook(size: CGSize) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 30) {
-                ForEach(currentSketchArray) { sketch in
-                    VStack(alignment: .leading) {
-                        VStack(spacing: -30) {
-                            Image(.sketchbookSpring)
-                                .frame(width: size.width * 0.41)
-                                .zIndex(1)
-                            
-                            ZStack {
-                                Rectangle()
-                                    .foregroundStyle(.white)
-                                    .frame(width: size.width * 0.39, height: size.height * 0.33)
-                                
-                                Image("\(sketch.sketchName)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: size.height * 0.3)
-                            }
-                        }
-                        .onTapGesture {
-                            isCanvasOn = true
-                            selectSketch = sketch.sketchName
-                            selectedSketchName = sketch.name
-                        }
-                        
-                        Text("\(sketch.name)")
-                            .font(.bigTitle1)
-                            .padding(.leading, 10)
-                        
-                        Text("\(sketchDate)")
-                            .font(.subTitle)
-                            .foregroundStyle(.white)
-                            .padding(.leading, 10)
-                    }
+                ForEach(isAnimal ? sketchViewModel.animalSketch : sketchViewModel.insectSketch, id: \.self) { sketch in
+                    SketchBook(size: size, sketch: sketch, isCanvasOn: $isCanvasOn, selectSketch: $selectSketch, selectedSketchName: $selectedSketchName)
                     .padding(.bottom, size.height * 0.19)
                 }
             }
         }
         .padding(.leading, 84)
     }
+}
+
+// MARK: - 스케치북 내용물
+private struct SketchBook: View {
+    let size: CGSize
+    @State var sketch: MenuCategory
     
-    // MARK: - 날짜 변환 함수
-    func todayDate() -> String {
-           let formatter = DateFormatter()
-           formatter.dateFormat = "yyyy년 MM월 dd일"
-           return formatter.string(from: Date())
-       }
+    @Binding var isCanvasOn: Bool
+    @Binding var selectSketch: String
+    @Binding var selectedSketchName: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            VStack(spacing: -30) {
+                Image(.sketchbookSpring)
+                    .frame(width: size.width * 0.41)
+                    .zIndex(1)
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.white)
+                        .frame(width: size.width * 0.39, height: size.height * 0.33)
+                        .overlay(alignment: .bottomTrailing) {
+                            Image("\(sketch.saveStamp ?? " ")")
+                                .padding(.trailing, 20)
+                                .padding(.bottom, 20)
+                        }
+                    
+                    Image("\(sketch.sketchName)")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: size.height * 0.3)
+                }
+            }
+            .onTapGesture {
+                isCanvasOn = true
+                selectSketch = sketch.sketchName
+                selectedSketchName = sketch.name
+            }
+            
+            Text("\(sketch.name)")
+                .font(.bigTitle1)
+                .padding(.leading, 10)
+            
+            Text(sketch.saveDate ?? " ")
+                .font(.subTitle)
+                .foregroundStyle(.white)
+                .padding(.leading, 10)
+        }
+    }
 }
 
 #Preview {

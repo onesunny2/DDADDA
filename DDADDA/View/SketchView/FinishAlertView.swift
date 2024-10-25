@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct FinishAlertView: View {
+    @State var sketchViewModel: SketchViewModel
     @Binding var isAlertClosed: Bool
     @Binding var isCanvasClosed: Bool
+    @Binding var saveDate: String
+    @Binding var selectSketch: String
     
     var body: some View {
         ZStack {
@@ -46,7 +49,7 @@ struct FinishAlertView: View {
                                 .foregroundStyle(.lightTree)
                         }
                         .onTapGesture {
-                            isAlertClosed = true
+                            isAlertClosed = false
                         }
                     
                     UnevenRoundedRectangle(topLeadingRadius: 0, bottomLeadingRadius: 0, bottomTrailingRadius: 32, topTrailingRadius: 0)
@@ -58,7 +61,14 @@ struct FinishAlertView: View {
                                 .foregroundStyle(.darkTree)
                         }
                         .onTapGesture {
-                            isCanvasClosed = true
+                            if let index = sketchViewModel.animalSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
+                                sketchViewModel.animalSketch[index].saveDate = DateManager.todayDate
+                                sketchViewModel.animalSketch[index].saveStamp = "stamp"
+                            } else if let index = sketchViewModel.insectSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
+                                sketchViewModel.insectSketch[index].saveDate = DateManager.todayDate
+                                sketchViewModel.insectSketch[index].saveStamp = "stamp"
+                            }
+                            isCanvasClosed = false
                         }
                 }
             }
@@ -67,5 +77,5 @@ struct FinishAlertView: View {
 }
 
 #Preview {
-    FinishAlertView(isAlertClosed: .constant(false), isCanvasClosed: .constant(false))
+    FinishAlertView(sketchViewModel: SketchViewModel(), isAlertClosed: .constant(false), isCanvasClosed: .constant(false), saveDate: .constant(" "), selectSketch: .constant("rabbit"))
 }

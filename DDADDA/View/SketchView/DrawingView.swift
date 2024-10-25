@@ -10,15 +10,20 @@ import PencilKit
 import UIKit
 
 struct DrawingView: View {
+    @State var sketchViewModel: SketchViewModel
     @Binding var selectSketch: String
     @Binding var selectedSketchName: String
     @Binding var isCanvasOn: Bool
+    @State var isSelectedFinish: Bool = false
+    @Binding var saveDate: String
     
     // PKCanvas 관련
     @State var canvas = PKCanvasView()
     @State var colors: [ColorModel] = selectColors
     @State var selectedColor: Color = .red
     @State var isPaletted: Bool = false
+    @State var isWriting: Bool = true
+    @State var toolType: PKInkingTool.InkType = .crayon
     
     var body: some View {
         GeometryReader { geo in
@@ -26,7 +31,10 @@ struct DrawingView: View {
                 Color.white
                     .ignoresSafeArea(.all)
                 
+                drawingCanvasView(selectedColor: $selectedColor, canvas: $canvas, isWriting: $isWriting, toolType: $toolType)
+                
                 canvasImg(size: geo.size)
+                    .allowsHitTesting(false)
                 
                 closeAndFinishButton()
                 
@@ -35,6 +43,9 @@ struct DrawingView: View {
                 drawingTool(size: geo.size)
                 
                 ColorPalette()
+                
+                FinishAlertView(sketchViewModel: sketchViewModel, isAlertClosed: $isSelectedFinish, isCanvasClosed: $isCanvasOn, saveDate: $saveDate, selectSketch: $selectSketch)
+                    .opacity(isSelectedFinish ? 1 : 0)
             }
         }
     }
@@ -70,6 +81,9 @@ struct DrawingView: View {
                         Text("다했어요!")
                             .font(.bigTitle3)
                             .foregroundStyle(.darkTree)
+                    }
+                    .onTapGesture {
+                        isSelectedFinish = true
                     }
             }
             
@@ -108,6 +122,9 @@ struct DrawingView: View {
                                 .foregroundStyle(.darkTree)
                                 .font(.system(size: 24))
                         }
+                        .onTapGesture {
+                            canvas.undoManager?.undo()
+                        }
                     
                     Circle()
                         .frame(width: 48)
@@ -117,18 +134,48 @@ struct DrawingView: View {
                                 .foregroundStyle(.darkTree)
                                 .font(.system(size: 24))
                         }
+                        .onTapGesture {
+                            canvas.undoManager?.redo()
+                        }
                 }
             }
             
             // 도구 툴
             HStack(spacing: 42) {
                 Image(.crayon)
+                    .onTapGesture {
+                        withAnimation {
+                            isWriting = true
+                            toolType = .crayon
+                        }
+                    }
+                    .offset(y: (isWriting && toolType == .crayon) ? -45 : 0)
                 
                 Image(.marker)
+                    .onTapGesture {
+                        withAnimation {
+                            isWriting = true
+                            toolType = .marker
+                        }
+                    }
+                    .offset(y: (isWriting && toolType == .marker) ? -45 : 0)
                 
                 Image(.pencil)
+                    .onTapGesture {
+                        withAnimation {
+                            isWriting = true
+                            toolType = .pencil
+                        }
+                    }
+                    .offset(y: (isWriting && toolType == .pencil) ? -45 : 0)
                 
                 Image(.eraser)
+                    .onTapGesture {
+                        withAnimation {
+                            isWriting = false
+                        }
+                    }
+                    .offset(y: isWriting == false ? -45 : 0)
             }
             .offset(y: size.height / 1.9)
         }
@@ -167,11 +214,13 @@ struct DrawingView: View {
 // MARK: - PKCanvasView
 struct drawingCanvasView: UIViewRepresentable {
     
+    @Binding var selectedColor: Color
     @Binding var canvas: PKCanvasView
     @Binding var isWriting: Bool
+    @Binding var toolType: PKInkingTool.InkType
     
     var ink: PKInkingTool {
-        PKInkingTool(.pencil, color: UIColor(.white), width: 15)
+        PKInkingTool(toolType, color: UIColor(selectedColor), width: 15)
     }
     let eraser = PKEraserTool(.bitmap, width: 40)
     
@@ -189,6 +238,6 @@ struct drawingCanvasView: UIViewRepresentable {
 }
 
 
-#Preview {
-    DrawingView(selectSketch: .constant("squirrel"), selectedSketchName: .constant("다람쥐"), isCanvasOn: .constant(true))
-}
+//#Preview {
+//    DrawingView(selectSketch: .constant("squirrel"), selectedSketchName: .constant("다람쥐"), isCanvasOn: .constant(true), todayDate: .constant(" "))
+//}
