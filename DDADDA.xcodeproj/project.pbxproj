@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4315FD052C912CBC0071D4CE /* SketchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4315FD042C912CBC0071D4CE /* SketchView.swift */; };
+		435C88022CCAC9E00017C075 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C88012CCAC9E00017C075 /* DateManager.swift */; };
 		436423FA2CC16C080007E604 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423F92CC16C080007E604 /* Extension+UIView.swift */; };
 		436423FC2CC7EAC20007E604 /* SketchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423FB2CC7EAC20007E604 /* SketchList.swift */; };
 		436423FE2CC927590007E604 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436423FD2CC927590007E604 /* DrawingView.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		4315FD042C912CBC0071D4CE /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
+		435C88012CCAC9E00017C075 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		436423F92CC16C080007E604 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		436423FB2CC7EAC20007E604 /* SketchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchList.swift; sourceTree = "<group>"; };
 		436423FD2CC927590007E604 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 			path = SketchView;
 			sourceTree = "<group>";
 		};
+		435C88002CCAC9CA0017C075 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				435C88012CCAC9E00017C075 /* DateManager.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 		439CBC532C35A0270057E352 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 		439CBC5E2C35A0270057E352 /* DDADDA */ = {
 			isa = PBXGroup;
 			children = (
+				435C88002CCAC9CA0017C075 /* Date */,
 				439CBCEA2C453F4F0057E352 /* Manager */,
 				439CBC9A2C35A3440057E352 /* Extension */,
 				439CBC992C35A2F30057E352 /* Info.plist */,
@@ -389,6 +400,7 @@
 				439CBC602C35A0270057E352 /* DDADDAApp.swift in Sources */,
 				4315FD052C912CBC0071D4CE /* SketchView.swift in Sources */,
 				439CBC652C35A0270057E352 /* DDADDA.xcdatamodeld in Sources */,
+				435C88022CCAC9E00017C075 /* DateManager.swift in Sources */,
 				439CBCE52C4445940057E352 /* Extension+Image.swift in Sources */,
 				43FFECCB2C4A06F30022FFA5 /* WordView.swift in Sources */,
 				43FFECD12C4D3B6F0022FFA5 /* WritingWordList.swift in Sources */,
