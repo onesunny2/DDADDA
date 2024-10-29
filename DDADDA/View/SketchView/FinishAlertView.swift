@@ -72,6 +72,7 @@ struct FinishAlertView: View {
                         }
                 }
             }
+            .padding(.bottom, 170)
         }
     }
 }
