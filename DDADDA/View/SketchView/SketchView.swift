@@ -10,7 +10,6 @@ import SwiftUI
 struct SketchView: View {
     @State var sketchViewModel: SketchViewModel = SketchViewModel()
     @State var isCanvasOn: Bool = false
-    @State var myBookNum: Int = 0
     @State var allBookNum: Int = 10
     @State var saveDate: String = " "
     @State var currentCategory: String = "animal"
@@ -78,7 +77,7 @@ struct SketchView: View {
                                         .foregroundStyle(.white)
                                         .padding(.trailing, 80)
                                     
-                                    Text("\(myBookNum)개")
+                                    Text("\(sketchViewModel.animalSketch.filter { $0.saveStamp != nil }.count + sketchViewModel.insectSketch.filter { $0.saveStamp != nil }.count)개")
                                         .font(.itemTitle)
                                         .foregroundStyle(.white)
                                         .frame(width: 39)
