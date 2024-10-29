@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SketchView: View {
+//    @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
     @State var sketchViewModel: SketchViewModel = SketchViewModel()
     @State var isCanvasOn: Bool = false
     @State var allBookNum: Int = 10

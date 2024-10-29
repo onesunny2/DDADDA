@@ -62,11 +62,13 @@ struct FinishAlertView: View {
                         }
                         .onTapGesture {
                             if let index = sketchViewModel.animalSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
-                                sketchViewModel.animalSketch[index].saveDate = DateManager.todayDate
-                                sketchViewModel.animalSketch[index].saveStamp = "stamp"
+                                sketchViewModel.addSaveData(to: sketchViewModel.animalSketch[index], saveDate: DateManager.todayDate, saveStamp: "stamp")
+//                                sketchViewModel.animalSketch[index].saveDate = DateManager.todayDate
+//                                sketchViewModel.animalSketch[index].saveStamp = "stamp"
                             } else if let index = sketchViewModel.insectSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
-                                sketchViewModel.insectSketch[index].saveDate = DateManager.todayDate
-                                sketchViewModel.insectSketch[index].saveStamp = "stamp"
+                                sketchViewModel.addSaveData(to: sketchViewModel.insectSketch[index], saveDate: DateManager.todayDate, saveStamp: "stamp")
+//                                sketchViewModel.insectSketch[index].saveDate = DateManager.todayDate
+//                                sketchViewModel.insectSketch[index].saveStamp = "stamp"
                             }
                             isCanvasClosed = false
                         }
