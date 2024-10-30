@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SketchView: View {
-//    @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
     @State var sketchViewModel: SketchViewModel = SketchViewModel()
     @State var isCanvasOn: Bool = false
     @State var allBookNum: Int = 10
@@ -181,6 +180,14 @@ private struct SketchBook: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: size.height * 0.3)
+                    
+                    if let savedDrawing = sketch.savedDrawing {
+                        // 저장된 이미지가 있으면 표시
+                        Image(uiImage: savedDrawing)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: size.height * 1)
+                    }
                 }
             }
             .onTapGesture {

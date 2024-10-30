@@ -44,10 +44,16 @@ struct DrawingView: View {
                 
                 ColorPalette()
                 
-                FinishAlertView(sketchViewModel: sketchViewModel, isAlertClosed: $isSelectedFinish, isCanvasClosed: $isCanvasOn, saveDate: $saveDate, selectSketch: $selectSketch)
+                FinishAlertView(sketchViewModel: sketchViewModel, isAlertClosed: $isSelectedFinish, isCanvasClosed: $isCanvasOn, saveDate: $saveDate, selectSketch: $selectSketch, saveDrawingAction: saveDrawingAsPNG)
                     .opacity(isSelectedFinish ? 1 : 0)
             }
         }
+    }
+    
+    // 그림 PNG로 저장하는 함수
+    func saveDrawingAsPNG() -> UIImage? {
+        let image = canvas.drawing.image(from: canvas.bounds, scale: UIScreen.main.scale)
+        return image // UIImage 반환
     }
     
     // MARK: - 캔버스 이미지
