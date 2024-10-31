@@ -15,16 +15,27 @@ struct MenuCategory: Identifiable, Equatable, Hashable, Codable {
     let sketchName: String
     var saveDate: String?
     var saveStamp: String?
+    var savedDrawingData: Data? // UIImage 대신 Data로 저장
+
+    // UIImage로 변환하는 계산 프로퍼티
+    var savedDrawing: UIImage? {
+        get {
+            if let data = savedDrawingData {
+                return UIImage(data: data)
+            }
+            return nil
+        }
+        set {
+            savedDrawingData = newValue?.pngData()
+        }
+    }
 }
-
-
 
 @Observable
 class SketchViewModel {
     private let animalKey = "animalSketchKey"
     private let insectKey = "insectSketchKey"
     
-    // 초기화 단계에서 기본값으로 빈 배열 할당
     var animalSketch: [MenuCategory] {
         didSet {
             saveToUserDefaults(animalSketch, key: animalKey)
@@ -39,12 +50,10 @@ class SketchViewModel {
     
     var currentSketchArray: [MenuCategory]?
     
-    // 기본값으로 빈 배열을 할당하고 init에서 UserDefaults 로드
     init() {
         self.animalSketch = []
         self.insectSketch = []
         
-        // UserDefaults에서 데이터 로드
         self.animalSketch = loadFromUserDefaults(key: animalKey) ?? [
             MenuCategory(category: "animal", name: "라쿤", sketchName: "raccon"),
             MenuCategory(category: "animal", name: "토끼", sketchName: "rabbit"),
@@ -62,13 +71,15 @@ class SketchViewModel {
         ]
     }
     
-    func addSaveData(to item: MenuCategory, saveDate: String, saveStamp: String) {
+    func addSaveData(to item: MenuCategory, saveDate: String, saveStamp: String, savedDrawing: UIImage?) {
         if let index = animalSketch.firstIndex(of: item) {
             animalSketch[index].saveDate = saveDate
             animalSketch[index].saveStamp = saveStamp
+            animalSketch[index].savedDrawingData = savedDrawing?.pngData() // UIImage를 Data로 변환하여 저장
         } else if let index = insectSketch.firstIndex(of: item) {
             insectSketch[index].saveDate = saveDate
             insectSketch[index].saveStamp = saveStamp
+            insectSketch[index].savedDrawingData = savedDrawing?.pngData() // UIImage를 Data로 변환하여 저장
         }
     }
     

@@ -13,6 +13,7 @@ struct FinishAlertView: View {
     @Binding var isCanvasClosed: Bool
     @Binding var saveDate: String
     @Binding var selectSketch: String
+    var saveDrawingAction: () -> UIImage?
     
     var body: some View {
         ZStack {
@@ -61,14 +62,15 @@ struct FinishAlertView: View {
                                 .foregroundStyle(.darkTree)
                         }
                         .onTapGesture {
-                            if let index = sketchViewModel.animalSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
-                                sketchViewModel.addSaveData(to: sketchViewModel.animalSketch[index], saveDate: DateManager.todayDate, saveStamp: "stamp")
-//                                sketchViewModel.animalSketch[index].saveDate = DateManager.todayDate
-//                                sketchViewModel.animalSketch[index].saveStamp = "stamp"
-                            } else if let index = sketchViewModel.insectSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
-                                sketchViewModel.addSaveData(to: sketchViewModel.insectSketch[index], saveDate: DateManager.todayDate, saveStamp: "stamp")
-//                                sketchViewModel.insectSketch[index].saveDate = DateManager.todayDate
-//                                sketchViewModel.insectSketch[index].saveStamp = "stamp"
+                            if let savedDrawing = saveDrawingAction() {
+                                if let index = sketchViewModel.animalSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
+                                    sketchViewModel.addSaveData(to: sketchViewModel.animalSketch[index], saveDate: DateManager.todayDate, saveStamp: "stamp", savedDrawing: savedDrawing)
+                                    print("\(sketchViewModel.animalSketch[index].savedDrawing)")
+                                    
+                                } else if let index = sketchViewModel.insectSketch.firstIndex(where: { $0.sketchName == selectSketch }) {
+                                    sketchViewModel.addSaveData(to: sketchViewModel.insectSketch[index], saveDate: DateManager.todayDate, saveStamp: "stamp", savedDrawing: savedDrawing)
+                                    print("\(sketchViewModel.insectSketch[index].savedDrawing)")
+                                }
                             }
                             isCanvasClosed = false
                         }
@@ -79,6 +81,6 @@ struct FinishAlertView: View {
     }
 }
 
-#Preview {
-    FinishAlertView(sketchViewModel: SketchViewModel(), isAlertClosed: .constant(false), isCanvasClosed: .constant(false), saveDate: .constant(" "), selectSketch: .constant("rabbit"))
-}
+//#Preview {
+//    FinishAlertView(sketchViewModel: SketchViewModel(), isAlertClosed: .constant(false), isCanvasClosed: .constant(false), saveDate: .constant(" "), selectSketch: .constant("rabbit"), saveDrawingAction: {})
+//}
