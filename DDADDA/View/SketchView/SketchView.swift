@@ -161,7 +161,7 @@ private struct SketchBook: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(spacing: -30) {
+            VStack(spacing: -65) {
                 Image(.sketchbookSpring)
                     .frame(width: size.width * 0.41)
                     .zIndex(1)
@@ -186,7 +186,11 @@ private struct SketchBook: View {
                         Image(uiImage: savedDrawing)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: size.height * 1)
+                            .frame(height: size.height * 0.4)
+                    } else {
+                        Rectangle()
+                            .foregroundStyle(.clear)
+                            .frame(width: size.width * 0.39, height: size.height * 0.4)
                     }
                 }
             }
